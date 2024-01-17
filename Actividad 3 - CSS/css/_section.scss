@@ -1,0 +1,147 @@
+:root {
+    --blue: #1e90ff;
+    --white: #ffffff;
+    --grey: rgba(142, 142, 142, 0.5);
+}
+
+.section {
+    &1 {
+        @include desktop {
+            display: grid;
+            grid-template-columns: repeat(2, 50%);
+        }
+
+        img {
+            display: flex;
+            max-width: 700px;
+            width: 100%;
+            height: auto;
+            margin: auto;
+        }
+
+        &-content {
+
+
+            @include desktop {
+                display: flex;
+                flex-direction: column;
+
+                justify-content: space-between;
+                padding-left: 20px;
+            }
+
+            .section1-ofert {
+                color: red;
+                font-weight: bold;
+            }
+        }
+
+        .price-boton {
+            display: flex;
+
+            a {
+                padding: 15px;
+                background-color: blue;
+                border-radius: 50px;
+                border: none;
+                color: white;
+                margin-left: 30px;
+                margin: auto;
+
+            }
+
+        }
+
+        .catacteristicas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            @include desktop {
+                grid-template-columns: 1fr 1fr 1fr;
+
+            }
+
+            p {
+                display: flex;
+
+                &::before {
+                    margin: auto;
+                    padding-right: 10px;
+                }
+            }
+        }
+    }
+
+    &2 {
+        div {
+            @include desktop {
+                display: grid;
+                grid-template-columns: repeat(4, 25%);
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            article {
+                border: solid 1px var(--grey);
+                border-radius: 5px;
+                padding: 10px;
+                margin-bottom: 20px;
+
+                @include desktop {
+                    margin: 20px;
+                }
+
+                .article-oferta {
+                    width: 45px;
+                    background-color: red;
+                    padding: 5px;
+                    border-radius: 5px;
+                    color: white;
+                }
+
+                .article-new {
+                    width: 45px;
+                    background-color: blue;
+                    padding: 5px;
+                    border-radius: 5px;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    &3 {
+        background-color: rgba(61, 35, 211, 0.2);
+        padding: 10px 20px;
+
+        @include desktop {
+            display: grid;
+            grid-template-columns: 65% 35%;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            label {
+                margin-bottom: 10px;
+            }
+
+            input {
+                padding: 10px;
+                margin-bottom: 10px;
+
+            }
+
+            button {
+                padding: 5px;
+                background-color: #1e90ff;
+                width: 100px;
+                margin-top: 10px;
+            }
+        }
+    }
+}

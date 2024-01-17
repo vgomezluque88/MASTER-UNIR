@@ -1,0 +1,27 @@
+ header {
+    border-bottom: solid 1px var(--grey);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    ul {
+        display: none;
+       @include desktop{
+        display: inline-block;
+        list-style: none;
+        margin: auto 0px;
+       }
+        li {
+            display: inline;
+            list-style: none;
+            @include desktop{
+                margin-right: 10px;
+            }
+            a {
+                color: black;
+                text-decoration: none;
+                margin: auto;
+            
+            }
+        }
+    }
+}
