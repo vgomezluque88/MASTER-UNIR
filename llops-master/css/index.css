@@ -1,0 +1,88 @@
+#backgroundvideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
+.loginyregister {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+    padding: 2%;
+    width: 10%;
+    margin-top: -35%;
+    margin-left: 80%;
+}
+
+.loginyregister button {
+    margin: 10px;
+    font-size: 20px;
+    background: none;
+    border: none;
+}
+
+.register,
+.login {
+    display: none;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: -30%;
+    width: 20%;
+    background: rgba(0, 0, 0, 0.5);
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+    padding: 1%;
+}
+
+.register input {
+    padding: 2%;
+    margin: 1%;
+}
+
+.login input {
+    padding: 2%;
+    margin: 1%;
+}
+
+.Color1 {
+    font-size: 20px;
+    color: #daf6ff;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+}
+
+.start {
+    font-size: 50px;
+    margin-top: 30%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.start h1 {
+    font-size: 50px;
+}
+
+.start a {
+    font-size: 50px;
+}
+
+.start a:hover {
+    border-bottom: solid 1px 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+}
+
+.boton-register {
+    margin-left: 90%;
+    margin-top: 10px;
+    border: none;
+    background: none;
+    color: white;
+}
+
+.enviarSubmit {
+    color: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+}

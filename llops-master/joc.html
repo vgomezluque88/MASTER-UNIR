@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/joc.css">
+    <script src="js/joc.js">
+    </script>
+    <title>joc</title>
+</head>
+
+<body>
+
+    <div class="general">
+
+        <div class="jugadores">
+            <div class="jugadorPrincipal jugador "> <img src="img/sicario.png" alt="sicario"></div>
+            <div class="jugador2 jugador  "><img src="img/guardia.pbg.jpg" alt="guardia"></div>
+            <div class="jugador3 jugador "><img src="img/yonki.png" alt="yonki"> </div>
+            <div class="jugador4 jugador"><img src="img/ciudadano.png" alt="ciudadano"> </div>
+            <div class="jugador5 jugador"><img src="img/ciudadano.png" alt="ciudadano"> </div>
+            <div class="jugador6 jugador"><img src="img/JuAN-cARLOS.jpg" alt="juanCarlos"> </div>
+            <div class="jugador7 jugador"><img src="img/ciudadano.png" alt="ciudadano"> </div>
+            <div class="jugador8 jugador"><img src="img/ciudadano.png" alt="ciudadano"></div>
+            <div class="jugador9 jugador"><img src="img/ciudadano.png" alt="ciudadano"> </div>
+            <div class="jugador10 jugador"><img src="img/ciudadano.png" alt="ciudadano"> </div>
+            <div class="jugador11 jugador"><img src="img/camello.png" alt="camello" onmouseover="setTimeout(flip, 1000);" id="muerto">
+            </div>
+            <div class="jugador12 jugador"><img src="img/ciudadano.png" alt="ciudadano"></div>
+        </div>
+
+        <div class="chat" id="chat">
+            <h3>CHAT</h3>
+            <div class="mensajes" id="mensajes">
+                <p class="mensaje">Hola</p>
+                <p class="mensaje1">Hola</p>
+                <p class="mensaje">que tal?</p>
+                <p class="mensaje1">Bien y tu?</p>
+                <p class="mensaje">mal,Adios</p>
+            </div>
+            <input type="textarea" placeholder="Escribe tu mensaje" class="mensajeenviar" id="mensajeenviar"><button onclick="sumarmsn()">> </button></input>
+
+        </div>
+        <div class="muertos" id="muertos">
+        </div>
+    </div>
+
+</body>
+
+</html>
