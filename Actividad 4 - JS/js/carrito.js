@@ -1,0 +1,10 @@
+class Carrito{
+
+    constructor(){
+
+    }
+
+    añadirProducto(){
+        
+    }
+}
