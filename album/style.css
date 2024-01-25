@@ -1,0 +1,28 @@
+.img-responsive {
+    max-width: 100%;
+}
+
+.wrapper {
+    max-width: 1440px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 0 auto;
+}
+
+.album {
+    display: flex;
+    gap: 16px;
+}
+
+.album-thumbnails,
+.album-preview {
+    flex: 1;
+}
+
+.album-thumbnail {
+    transition: transform 0.2s ease-in-out;
+}
+
+.album-thumbnail:hover {
+    transform: scale(1.05);
+}
