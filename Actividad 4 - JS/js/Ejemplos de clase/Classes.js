@@ -74,9 +74,7 @@ class Parking{
       return coche.dameBastidor() !== bastidor;
     });  }
   
-  completo(){
-    return this.#limite ===
-  }
+
   
   dameCoche(){
     return this.#coches;

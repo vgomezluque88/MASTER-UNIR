@@ -27,10 +27,17 @@ class Carrito {
 
     obtenerInformacionProducto(sku) {
         //Buscador?
+
+        // En el js si tienen parecido los textos, no que sean iguales.
     }
 
     obtenerCarrito() {
         return this.#list;
+    }
+
+    obtenerPreciototal() {
+        return this.#list.product;
+
     }
 
 }

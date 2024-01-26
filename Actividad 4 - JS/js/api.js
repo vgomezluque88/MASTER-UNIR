@@ -28,7 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //Sirve para lanzar cuando cambia el contenido
         inputCantidad.addEventListener("input", () => {
+            carrito.añadirProducto(product_SKU);
+
             console.log("cambia el contenido de input");
+            console.log(carrito.obtenerCarrito());
+
         });
 
 
@@ -60,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 divProduct.append(productoCarritoprice);
                 divProduct.append(buttonBorrar);
                 divTotal.append(divProduct);
+
             });
 
 
