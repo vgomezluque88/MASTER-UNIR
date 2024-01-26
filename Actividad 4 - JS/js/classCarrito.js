@@ -21,22 +21,27 @@ class Carrito {
     }
 
 
-    actualizarUnidades(product, cantidad) {
-        product.cantidad = product.cantidad + cantidad;
-    }
-
-    obtenerInformacionProducto(sku) {
-        //Buscador?
-
-        // En el js si tienen parecido los textos, no que sean iguales.
-    }
 
     obtenerCarrito() {
         return this.#list;
     }
 
     obtenerPreciototal() {
-        return this.#list.product;
+
+        const precioTotal = this.#list.reduce((acc, product) => {
+            return acc + product.price;
+        }, 0);
+        return Number(precioTotal.toFixed(2));
+
+    }
+
+    obtenerCantidad(sku) {
+
+        this.#list.forEach(productoLista => {
+            const cantidad = this.#list.filter(productoLista => productoLista.sku == sku);
+            console.log(cantidad.length);
+            return cantidad.length;
+        })
 
     }
 
