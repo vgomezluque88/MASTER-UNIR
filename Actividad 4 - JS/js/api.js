@@ -78,9 +78,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             carrito.obtenerCarrito().forEach(productoCarrito => {
 
+                // LLamar a una funcion de la classe que te devuelva los libros y su cantidad?
+
                 const productoCarritotitle = document.createElement("p");
                 const productoCarritoprice = document.createElement("p");
-                const productoCarritocantidad = document.querySelector(".cantidad");
+                const productoCarritocantidad = document.querySelector(".totalCart");
                 productoCarritocantidad.textContent = carrito.obtenerCantidad(productoCarrito.sku);
 
                 const buttonBorrar = document.createElement("button");
