@@ -32,101 +32,25 @@ footer {
 body {
   margin: 0px;
   font-family: 'Montserrat'; }
-
-main {
-  padding: 10px 50px; }
-
-:root {
-  --blue: #1e90ff;
-  --white: #ffffff;
-  --grey: rgba(142, 142, 142, 0.5); }
-
-@media only screen and (min-width: 1024px) {
-  .section1 {
+  body main {
+    padding: 10px 50px;
     display: grid;
-    grid-template-columns: repeat(2, 50%); } }
-.section1 img {
-  display: flex;
-  max-width: 700px;
-  width: 100%;
-  height: auto;
-  margin: auto; }
-@media only screen and (min-width: 1024px) {
-  .section1-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-left: 20px; } }
-.section1-content .section1-ofert {
-  color: red;
-  font-weight: bold; }
-.section1 .price-boton {
-  display: flex; }
-  .section1 .price-boton a {
-    padding: 15px;
-    background-color: blue;
-    border-radius: 50px;
-    border: none;
-    color: white;
-    margin-left: 30px;
-    margin: auto; }
-.section1 .catacteristicas {
-  display: grid;
-  grid-template-columns: 1fr 1fr; }
-  @media only screen and (min-width: 1024px) {
-    .section1 .catacteristicas {
-      grid-template-columns: 1fr 1fr 1fr; } }
-  .section1 .catacteristicas p {
-    display: flex; }
-    .section1 .catacteristicas p::before {
-      margin: auto;
-      padding-right: 10px; }
-@media only screen and (min-width: 1024px) {
-  .section2 div {
-    display: grid;
-    grid-template-columns: repeat(4, 25%); } }
-.section2 div img {
-  width: 100%;
-  height: auto; }
-.section2 div article {
-  border: solid 1px var(--grey);
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 20px; }
-  @media only screen and (min-width: 1024px) {
-    .section2 div article {
-      margin: 20px; } }
-  .section2 div article .article-oferta {
-    width: 45px;
-    background-color: red;
-    padding: 5px;
-    border-radius: 5px;
-    color: white; }
-  .section2 div article .article-new {
-    width: 45px;
-    background-color: blue;
-    padding: 5px;
-    border-radius: 5px;
-    color: white; }
-.section3 {
-  background-color: rgba(61, 35, 211, 0.2);
-  padding: 10px 20px; }
-  @media only screen and (min-width: 1024px) {
-    .section3 {
-      display: grid;
-      grid-template-columns: 65% 35%; } }
-  .section3 form {
-    display: flex;
-    flex-direction: column; }
-    .section3 form label {
-      margin-bottom: 10px; }
-    .section3 form input {
-      padding: 10px;
-      margin-bottom: 10px; }
-    .section3 form button {
-      padding: 5px;
-      background-color: #1e90ff;
-      width: 100px;
-      margin-top: 10px; }
+    grid-template-columns: 60% 40%; }
+    body main table th {
+      text-align: left; }
+    body main table td button {
+      border: none;
+      background: transparent;
+      padding: 0px 10px; }
+      body main table td button:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: background-color 0.3; }
+    body main #cart {
+      padding-left: 50px; }
+      body main #cart h1 {
+        font-size: 20px;
+        margin: 0px; }
+      body main #cart .div-classe div {
+        display: flex; }
 
 /*# sourceMappingURL=style.css.map */

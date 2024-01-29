@@ -8,13 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Una forma rapida y limpia crear variables.
         const { SKU, title, price } = product;
-        const product_SKU = new Product(SKU, title, price);
-        console.table(product_SKU);
+        const product_SKU = new productCart(SKU, title, price);
+
         //Coges la etiqueta tbody de la tabla
         const nametable = document.querySelector("table tbody");
         const divTotal = document.querySelector(".cart-products__total");
-        const buscador = document.querySelector(".buscadorCart");
-        const totalCart = document.querySelector(".totalCart");
+        const totalCart = document.querySelector(".totalCartPrice");
         //Creas los elementos que necesitas
         const tr = document.createElement("tr");
 
@@ -31,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const cantidad_text = document.createElement("td");
         const inputCantidadtd = document.createElement("td");
         const inputCantidad = document.createElement("input");
+        inputCantidad.id = "testInput";
         const buttontd = document.createElement("td");
         const buttonrest = document.createElement("button");
         const buttonsum = document.createElement("button");
@@ -43,8 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
         cantidad_text.textContent = 0;
         buttonrest.innerText = "-";
         buttonsum.innerText = "+";
+        buttonrest.classList = "buttonrest";
+        buttonsum.classList = "buttonsum";
         inputCantidad.value = 0;
-        inputCantidad.type = "number";
+        inputCantidad.type = "text";
         inputCantidad.classList = "inputCart";
 
         //Añadimos los dos textos al td de Titulo
@@ -65,25 +67,70 @@ document.addEventListener("DOMContentLoaded", () => {
         tr.append(buttontd);
         nametable.append(tr);
 
+        buttonsum.addEventListener("click", () => {
 
-        //Funciones
+            inputCantidad.value = parseInt(inputCantidad.value) + 1; // Incrementa el valor en 1
+            //He tenido que crear el campo manualmente porque si no el addEventListener no me saltaba.
+            var event = new Event('input', {
+                bubbles: true,
+                cancelable: true,
+            });
+            inputCantidad.dispatchEvent(event);
+        });
+
+
+
+        buttonrest.addEventListener("click", () => {
+
+            if (parseInt(inputCantidad.value) - 1 >= 0) {
+                inputCantidad.value = parseInt(inputCantidad.value) - 1; // Resta  el valor en 1
+
+                //He tenido que crear el campo manualmente porque si no el addEventListener no me saltaba.
+                var event = new Event('input', {
+                    bubbles: true,
+                    cancelable: true,
+                });
+                inputCantidad.dispatchEvent(event);
+            }
+        });
+
         //Sirve para lanzar cuando cambia el contenido
         inputCantidad.addEventListener("input", () => {
-            carrito.añadirProducto(product_SKU);
+
+
+            carrito.añadirProducto(product_SKU, inputCantidad.value);
+            console.table(carrito.obtenerCarrito());
+
+
             divTotal.innerText = "";
             divTotal.className = "div-classe";
 
-            const divProduct = document.createElement("div");
 
 
             carrito.obtenerCarrito().forEach(productoCarrito => {
-
                 // LLamar a una funcion de la classe que te devuelva los libros y su cantidad?
+                actualizarCarrito(productoCarrito);
+
+            });
+
+            const precioTotal = document.createElement("p");
+            precioTotal.textContent = carrito.obtenerPreciototal();
+            totalCart.append(precioTotal);
+        });
+
+        function actualizarCarrito(productoCarrito) {
+            const divProduct = document.createElement("div");
+            const classSearch = document.getElementById(productoCarrito.sku);
+            console.log(productoCarrito.sku);
+            console.log(classSearch);
+
+            if (!classSearch) {
 
                 const productoCarritotitle = document.createElement("p");
                 const productoCarritoprice = document.createElement("p");
-                const productoCarritocantidad = document.querySelector(".totalCart");
-                productoCarritocantidad.textContent = carrito.obtenerCantidad(productoCarrito.sku);
+                const productoCarritocantidad = document.querySelector(".totalCartPrice");
+                productoCarritocantidad.textContent = inputCantidad.value;
+                product_SKU.quantity = 0;
 
                 const buttonBorrar = document.createElement("button");
                 buttonBorrar.textContent = "X";
@@ -92,57 +139,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 // El clic del boton de borrar
                 buttonBorrar.addEventListener("click", () => {
                     carrito.borrarProducto(productoCarrito.sku);
-                    console.log(carrito.obtenerCarrito());
                 });
 
                 productoCarritotitle.textContent = productoCarrito.title;
                 productoCarritoprice.textContent = parseInt(productoCarrito.price);
+                divProduct.id = productoCarrito.sku;
                 divProduct.append(productoCarritotitle);
                 divProduct.append(productoCarritoprice);
                 divProduct.append(buttonBorrar);
                 divTotal.append(divProduct);
+                const totalProducto = productoCarrito.price * inputCantidad.value;
+                cantidad_text.textContent = Number(totalProducto.toFixed(2));
 
-            });
-
-            const precioTotal = document.createElement("p");
-            precioTotal.textContent = carrito.obtenerPreciototal();
-            totalCart.append(precioTotal);
-
-
-        });
-
-
-        // Como crear un buscador
-        buscador.addEventListener("input", () => {
-            console.log(buscador.value);
-
-            console.log(product_SKU.obtenerInformacionProducto(buscador.value));
-
-        });
-
-
-
-        buttonsum.addEventListener("click", () => {
-
-            const input = document.querySelector(".inputCart");
-            console.log(input);
-
-
-            input.value = sumarValue(input.value, "1");
-
-            function sumarValue(valorInput, numeroParaSumar) {
-                return valorInput + numeroParaSumar;
+            }
+            if (product_SKU.quantity == 0) {
+                divProduct.remove();
+                carrito.borrarProducto(productoCarrito.SKU);
             }
 
-        });
+        }
 
-        buttonrest.addEventListener("click", () => {
-            const input = document.querySelector(".inputCart");
-            console.log(input);
-            input.value = input.value - 1;
-
-
-        });
     }
 
     fetch("https://jsonblob.com/api/jsonBlob/1200560755010560000")
@@ -160,10 +176,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
-
-
-
-
 
 
 

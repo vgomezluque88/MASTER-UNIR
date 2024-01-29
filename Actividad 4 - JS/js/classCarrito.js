@@ -6,13 +6,21 @@ class Carrito {
         this.#list = [];
     }
 
-    añadirProducto(product) {
-        this.#list.push({
-            sku: product.sku,
-            title: product.title,
-            price: product.price,
+
+    añadirProducto(producto, cantidad) {
+        const productoExistente = this.#list.find(product => product.sku === producto.sku);
+
+        if (!productoExistente) {
+            // Añade el producto si no existe
+            this.#list.push({
+                sku: producto.sku,
+                title: producto.title,
+                price: producto.price,
+                quantity: parseInt(cantidad),
+            });
+        } else {
+            productoExistente.quantity = parseInt(cantidad);
         }
-        );
     }
 
     borrarProducto(sku) {
@@ -28,34 +36,18 @@ class Carrito {
 
     obtenerPreciototal() {
 
-        const precioTotal = this.#list.reduce((acc, product) => {
-            return acc + product.price;
-        }, 0);
+
+        let precioTotal = 0;
+        this.#list.forEach(product => {
+            precioTotal = parseInt(product.quantity) * parseInt(product.price);
+        });
+        console.log(precioTotal);
+
         return Number(precioTotal.toFixed(2));
 
     }
 
-    obtenerCantidad(sku) {
-
-        this.#list.forEach(productoLista => {
-            const cantidad = this.#list.filter(productoLista => productoLista.sku == sku);
-            console.log(cantidad.length);
-            return cantidad.length;
-        })
-
-    }
-
-}
 
 
-class productoCarrito extends Carrito {
-    //Para llamar al constructor primero tienes que llamar al constructor del padre, se hace con la palabra Super.
-    constructor(SKU, title, price, cantidad) {
-        super(SKU, title, price);
-        this.cantidad = 0;
-    }
 
-    setCantidad(productoCarrito, cantidad) {
-
-    }
 }
