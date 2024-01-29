@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const apiproducts = (product) => {
-
         // Una forma rapida y limpia crear variables.
         const { SKU, title, price } = product;
         const product_SKU = new productCart(SKU, title, price);
@@ -38,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cantidad_text.classList = "cantidadCarrito";
         cantidad_text.id = "cantidad-" + product_SKU.sku;
         title_text.textContent = title;
+        title_text.classList = "title";
         sku_text.textContent = "sku:" + SKU;
 
         price_text.textContent = price;
@@ -60,8 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
         inputCantidadtd.append(buttonsum);
 
 
-        tr.append(sku_text);
         tr.append(title_text);
+        tr.append(sku_text);
         tr.append(inputCantidadtd);
         tr.append(price_text);
         tr.append(cantidad_text);
@@ -94,15 +94,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 inputCantidad.dispatchEvent(event);
             }
 
-            if (inputCantidad.value == 0) {
-console.log()
 
-            }
         });
 
         //Sirve para lanzar cuando cambia el contenido
         inputCantidad.addEventListener("input", () => {
-
+            console.log(product_SKU.sku);
 
             carrito.añadirProducto(product_SKU, inputCantidad.value);
             console.table(carrito.obtenerCarrito());
@@ -119,6 +116,14 @@ console.log()
 
             });
 
+            if (inputCantidad.value == 0) {
+                const borrarDiv = document.getElementById(product_SKU.sku);
+                var elementoPadre = borrarDiv.parentNode;
+                elementoPadre.removeChild(borrarDiv);
+                console.table(carrito.obtenerCarrito());
+                carrito.borrarProducto(product_SKU.sku);
+
+            }
 
         });
 
@@ -177,7 +182,6 @@ console.log()
     fetch("https://jsonblob.com/api/jsonBlob/1200560755010560000")
         .then(response => {
             products = response.json();
-
             products.then(product => {
                 product['products'].forEach(element => {
                     apiproducts(element);
