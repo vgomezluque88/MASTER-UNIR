@@ -39,12 +39,13 @@ class Carrito {
 
         let precioTotal = 0;
         this.#list.forEach(product => {
-            precioTotal = parseInt(product.quantity) * parseInt(product.price);
+            precioTotal = precioTotal + product.quantity * product.price;
+
         });
+
+
         console.log(precioTotal);
-
         return Number(precioTotal.toFixed(2));
-
     }
 
 

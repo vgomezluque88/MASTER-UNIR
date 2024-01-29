@@ -30,12 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const cantidad_text = document.createElement("td");
         const inputCantidadtd = document.createElement("td");
         const inputCantidad = document.createElement("input");
-        inputCantidad.id = "testInput";
+        inputCantidad.id = "input-" + product_SKU.sku;
         const buttontd = document.createElement("td");
         const buttonrest = document.createElement("button");
         const buttonsum = document.createElement("button");
 
         cantidad_text.classList = "cantidadCarrito";
+        cantidad_text.id = "cantidad-" + product_SKU.sku;
         title_text.textContent = title;
         sku_text.textContent = "sku:" + SKU;
 
@@ -92,6 +93,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
                 inputCantidad.dispatchEvent(event);
             }
+
+            if (inputCantidad.value == 0) {
+console.log()
+
+            }
         });
 
         //Sirve para lanzar cuando cambia el contenido
@@ -113,9 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             });
 
-            const precioTotal = document.createElement("p");
-            precioTotal.textContent = carrito.obtenerPreciototal();
-            totalCart.append(precioTotal);
+
         });
 
         function actualizarCarrito(productoCarrito) {
@@ -124,21 +128,32 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(productoCarrito.sku);
             console.log(classSearch);
 
-            if (!classSearch) {
+
+            if (classSearch == null) {
 
                 const productoCarritotitle = document.createElement("p");
                 const productoCarritoprice = document.createElement("p");
                 const productoCarritocantidad = document.querySelector(".totalCartPrice");
-                productoCarritocantidad.textContent = inputCantidad.value;
-                product_SKU.quantity = 0;
+                productoCarritocantidad.textContent = carrito.obtenerPreciototal();
 
                 const buttonBorrar = document.createElement("button");
                 buttonBorrar.textContent = "X";
                 buttonBorrar.className = "boton-borrar";
 
                 // El clic del boton de borrar
-                buttonBorrar.addEventListener("click", () => {
+                buttonBorrar.addEventListener("click", (event) => {
+
                     carrito.borrarProducto(productoCarrito.sku);
+                    var vaciaInput = document.getElementById("input-" + productoCarrito.sku);
+                    vaciaInput.value = 0;
+                    var elementoAEliminar = document.getElementById(productoCarrito.sku);
+                    // Si no pongo esto se me borra todo el div
+                    var elementoPadre = elementoAEliminar.parentNode;
+                    elementoPadre.removeChild(elementoAEliminar);
+                    productoCarritocantidad.textContent = carrito.obtenerPreciototal();
+                    var vaciaTotal = document.getElementById("cantidad-" + productoCarrito.sku);
+
+                    vaciaTotal.textContent = product_SKU.quantity * product_SKU.price;
                 });
 
                 productoCarritotitle.textContent = productoCarrito.title;
@@ -148,14 +163,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 divProduct.append(productoCarritoprice);
                 divProduct.append(buttonBorrar);
                 divTotal.append(divProduct);
-                const totalProducto = productoCarrito.price * inputCantidad.value;
+                const totalProducto = product_SKU.price * inputCantidad.value;
                 cantidad_text.textContent = Number(totalProducto.toFixed(2));
 
             }
-            if (product_SKU.quantity == 0) {
-                divProduct.remove();
-                carrito.borrarProducto(productoCarrito.SKU);
-            }
+
+
 
         }
 
