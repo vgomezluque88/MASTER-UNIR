@@ -162,14 +162,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 productoCarritotitle.textContent = productoCarrito.title;
-                productoCarritoprice.textContent = parseInt(productoCarrito.price);
+                productoCarritoprice.textContent = Number(productoCarrito.price * productoCarrito.quantity).toFixed(2);
                 divProduct.id = productoCarrito.sku;
                 divProduct.append(productoCarritotitle);
                 divProduct.append(productoCarritoprice);
                 divProduct.append(buttonBorrar);
                 divTotal.append(divProduct);
                 const totalProducto = product_SKU.price * inputCantidad.value;
-                cantidad_text.textContent = Number(totalProducto.toFixed(2));
+                cantidad_text.textContent = Number(totalProducto);
 
             }
 
