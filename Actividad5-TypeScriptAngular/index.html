@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript</title>
+</head>
+
+<body>
+    <h2>TypeScript</h2>
+    <h4>Como hacer que una variable sea de dos tipos</h4>
+    <pre>
+    const a : string || number = true;
+
+</pre>
+
+    <h4>Variable any - Es para declarar una variable que no sabes el valor, con any creas una variable sin decirle su
+        tipo</h4>
+    <pre>
+const a : any = {};
+
+</pre>
+    <h4>Como manejar arrays, existen dos maneras</h4>
+    <pre>
+        const arrNum: number[] = [1,2,3,4,5];
+    </pre>
+    <h5>Esta es mejor, porque puedes declarar diferentes tipos de los datos del array</h5>
+    <pre>
+        const arrNames: array<string> = ["Victor","Gomez"];
+</pre>
+
+    <pre>
+    const arrNames: array<string || number> = ["Victor","Gomez",26];
+</pre>
+    <h4>Array Vacio</h4>
+    <pre>
+    const arrayVacio: number[] = [];
+    const arrayVacio: number[] = new Array();
+</pre>
+    <h4>Array de arrayas</h4>
+    <pre>
+    const arrayVacio: array<number[]> = [[1,2,3],[4,5,6]];
+</pre>
+
+    <h4>Tipado de funciones</h4>
+    <h3>Funciones declarativas</h3>
+    <pre>
+    function(numero1: number,numero2: number) :number {
+        let resultado = numero1 + numero2;
+        return resultado;
+    }
+</pre>
+
+    <h3>Funciones declarativas sin return</h3>
+    <pre>
+function(numero1: number,numero2: number) :void {
+console.log( numero1 + numero2);
+
+}
+</pre>
+
+
+    <h3>Funciones expresiva - anonimas</h3>
+    <pre>
+const multiplicacion = function(numero1: number,numero2: number):
+number{
+return numero1 * numero2;
+}
+
+
+</pre>
+
+
+    <h3>Arroy functions</h3>
+    <pre>
+        const multiplicacion = function(numero1: number,numero2: number) number:
+        => numero1 * numero2;
+        // Las {} solo se quitan si tienes una linea
+    </pre>
+
+    <h2>Tuplas</h2>
+    <h4>
+        Es una especia de array con longitud fija, es decir si declaras que tiene 4 numeros solo puedes meter 4 numeros.
+    </h4>
+    <pre>
+        let tupla: [string,number,boolean] = ['Victor', 26, false];
+    </pre>
+    <h2>Enum</h2>
+    <h4>
+        Es un mixt entre
+    </h4>
+    <pre>
+        enum talla{
+            sm,m,l,xl,xll
+        }
+
+        console.log(talla);
+        console.log(talla[0]); // Devuelve sm
+        console.log(talla); // Devuelve la posicion que en este caso seria 3
+    </pre>
+
+
+    <h1>Componentes angular</h1>
+    <h3>
+        Crear Componente
+    </h3>
+    <p>por comanda:</p>
+    <p>ng generate component components/</p>
+</body>
+
+</html>
