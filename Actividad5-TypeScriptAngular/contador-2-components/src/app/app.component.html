@@ -1,0 +1,19 @@
+<main class="main">
+  <div class="content">
+    <app-cuentaatras [numeroInicial]="2" (cuentraAtrasTerminado)="finish($event)"></app-cuentaatras>
+    <app-cuentaatras [numeroInicial]="12"></app-cuentaatras>
+    <app-cuentaatras [numeroInicial]="4"></app-cuentaatras>
+  </div>
+  <div [style]="color">Se acabó</div>
+</main>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+<router-outlet />
