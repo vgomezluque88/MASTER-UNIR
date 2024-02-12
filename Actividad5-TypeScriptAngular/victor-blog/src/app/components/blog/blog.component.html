@@ -1,0 +1,31 @@
+<section class="section-blog">
+    <div class="section-blog_guardar">
+        <!-- Capturar los datos-->
+        <label for="titulo">Titulo de la noticia</label>
+        <input type="text" placeholder="Introduce titulo" id="titulo" [(ngModel)]="newNoticia.titulo">
+
+        <label for="urlFoto">Url de la imagen</label>
+        <input type="text" placeholder="Introduce url de la imagen" id="urlFoto" [(ngModel)]="newNoticia.urlFoto">
+
+        <label for="textoNoticia">Descrupción de la noticia</label>
+        <input type="text" placeholder="Introduce el texto de la noticia" id="textoNoticia"
+            [(ngModel)]="newNoticia.textoNoticia">
+
+
+        <label for="fechaPublicacion">Fecha de la Publicacion</label>
+        <input type="date" id="fechaPublicacion" [(ngModel)]="newNoticia.fechaPublicacion">
+
+
+        <button (click)="guardarDatos()">Guardar</button>
+    </div>
+    <div class="section-blog_mostrar" [innerHTML]="cargarDatos()">
+        <!-- Mostrar los datos-->
+
+    </div>
+
+
+</section>
+
+<div class="alertaDiv">
+    <p>Te faltan valores del formulario por rellenar</p>
+</div>

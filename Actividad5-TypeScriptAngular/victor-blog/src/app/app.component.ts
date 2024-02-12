@@ -1,19 +1,15 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { INoticia } from './interfaces/inoticia.interface';
+import { BlogComponent } from './components/blog/blog.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, BlogComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'victor-blog';
-
-  arrNoticias: INoticia[] = [{
-    name: "Noticia 1",
-    number: 19
-  }]
+  title = 'El Blog de Víctor';
 }
